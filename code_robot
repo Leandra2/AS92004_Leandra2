@@ -1,9 +1,16 @@
 from lesson_header import *
-cups= 1
-DEFAULT_DISTANCE = 15
-MAX_CUPS = 4
-action_log_list = []
 
+cups= 1 # what cup you are up to.
+DEFAULT_DISTANCE = 15 # expected distance between cups.
+MAX_CUPS = 4 # maximum expected cups to go around.
+action_log_list = [] # save logs to list.
+
+# save and print function.
+def save_log_and_print(log_string):
+    action_log_list.append(log_string)
+    print(log_string)
+
+# do the thing.
 while cups <= MAX_CUPS:
 
     """
@@ -14,8 +21,7 @@ while cups <= MAX_CUPS:
     """
     distance_cm = sonar.get_distance_cm(filtered=True)
 
-    action_log_list.append(f"Distance: {distance_cm} : Cups: {cups}")
-    print(action_log_list[-1])
+    save_log_and_print(f"Distance: {distance_cm} : Cups: {cups}")
 
     if distance_cm  > DEFAULT_DISTANCE:
 
@@ -25,40 +31,34 @@ while cups <= MAX_CUPS:
 
         if cups == 1:
             
-            action_log_list.append("cup 1")
-            print(action_log_list[-1]) # every time robot passes print cup_number it passed.
+            save_log_and_print("cup 1") # every time robot passes print cup_number it passed.
             moves.move_right(1.5) # tell robout to move.
             cups +=1 # update cups number every time it passes a cup starting from 1 ending at 4.
 
         elif cups == 2:
-
+            save_log_and_print("cup 2") 
             moves.move_left(1.5)
-            action_log_list.append("cup 2")
-            print(action_log_list[-1])
+           
             cups +=1
 
         elif cups == 3:
 
             moves.move_right(1.5)
-            action_log_list.append("cup 3")
-            print(action_log_list[-1])
+            save_log_and_print("cup 3") 
 
             cups +=1
 
         elif cups == 4:
 
             moves.move_left(1.5) 
-            action_log_list.append("cup 4")
-            print(action_log_list[-1])
+            save_log_and_print("cup 4") 
 
             cups +=1
         else: 
-            action_log_list.append("warning: running after should be finished")
-            print(action_log_list[-1]) # error handling for odd case, this should not happen.
+            save_log_and_print("warning: running after should be finished") 
 
  
 moves.forward(1)
+save_log_and_print("finished") 
 
-action_log_list.append("finished")
-print(action_log_list[-1])
  
