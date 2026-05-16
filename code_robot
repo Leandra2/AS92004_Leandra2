@@ -2,6 +2,8 @@ from lesson_header import *
 cups= 1
 DEFAULT_DISTANCE = 15
 MAX_CUPS = 4
+action_log_list = []
+
 while cups <= MAX_CUPS:
 
 """
@@ -12,6 +14,7 @@ passes all 4 of the cups without crashing into any cups on the way.
 """
     distance_cm = sonar.get_distance_cm(filtered=True)
 
+    action_log_list.append(f"Distance: {distance_cm} : Cups: {cups}")
     print(f"Distance: {distance_cm} : Cups: {cups}")
 
     if distance_cm  > DEFAULT_DISTANCE:
@@ -21,7 +24,8 @@ passes all 4 of the cups without crashing into any cups on the way.
     else:
 
         if cups == 1:
-
+            
+            action_log_list.append("cup 1")
             print("cup 1") # every time robot passes print cup_number it passed.
 
             moves.move_right(1.5) # tell robout to move.
@@ -31,7 +35,7 @@ passes all 4 of the cups without crashing into any cups on the way.
         elif cups == 2:
 
             moves.move_left(1.5)
-
+            action_log_list.append("cup 2")
             print("cup 2")
 
             cups +=1
@@ -39,7 +43,7 @@ passes all 4 of the cups without crashing into any cups on the way.
         elif cups == 3:
 
             moves.move_right(1.5)
-
+            action_log_list.append("cup 3")
             print("cup 3")
 
             cups +=1
@@ -47,7 +51,7 @@ passes all 4 of the cups without crashing into any cups on the way.
         elif cups == 4:
 
             moves.move_left(1.5) 
-
+            action_log_list.append("cup 4")
             print("cup 4")
 
             cups +=1
@@ -56,5 +60,6 @@ passes all 4 of the cups without crashing into any cups on the way.
  
 moves.forward(1)
 
+action_log_list.append("finished")
 print("finished")
  
