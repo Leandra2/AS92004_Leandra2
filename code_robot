@@ -15,7 +15,7 @@ while cups <= MAX_CUPS:
     distance_cm = sonar.get_distance_cm(filtered=True)
 
     action_log_list.append(f"Distance: {distance_cm} : Cups: {cups}")
-    print(f"Distance: {distance_cm} : Cups: {cups}")
+    print(action_log_list[-1])
 
     if distance_cm  > DEFAULT_DISTANCE:
 
@@ -26,25 +26,22 @@ while cups <= MAX_CUPS:
         if cups == 1:
             
             action_log_list.append("cup 1")
-            print("cup 1") # every time robot passes print cup_number it passed.
-
+            print(action_log_list[-1]) # every time robot passes print cup_number it passed.
             moves.move_right(1.5) # tell robout to move.
-
             cups +=1 # update cups number every time it passes a cup starting from 1 ending at 4.
 
         elif cups == 2:
 
             moves.move_left(1.5)
             action_log_list.append("cup 2")
-            print("cup 2")
-
+            print(action_log_list[-1])
             cups +=1
 
         elif cups == 3:
 
             moves.move_right(1.5)
             action_log_list.append("cup 3")
-            print("cup 3")
+            print(action_log_list[-1])
 
             cups +=1
 
@@ -52,14 +49,16 @@ while cups <= MAX_CUPS:
 
             moves.move_left(1.5) 
             action_log_list.append("cup 4")
-            print("cup 4")
+            print(action_log_list[-1])
 
             cups +=1
-        else: print("warning: running after should be finished") # error handling for odd case, this should not happen.
+        else: 
+            action_log_list.append("warning: running after should be finished")
+            print(action_log_list[-1]) # error handling for odd case, this should not happen.
 
  
 moves.forward(1)
 
 action_log_list.append("finished")
-print("finished")
+print(action_log_list[-1])
  
