@@ -6,12 +6,12 @@ action_log_list = []
 
 while cups <= MAX_CUPS:
 
-"""
-goal is to make the robot reach the end by calculating the distance of how far 
-away/how close a cup is and to go around the cup if the distance is greater than 
-15 if it is greater than 15 it moves 1.5 to the left or to the right till it 
-passes all 4 of the cups without crashing into any cups on the way.
-"""
+    """
+    goal is to make the robot reach the end by calculating the distance of how far 
+    away/how close a cup is and to go around the cup if the distance is greater than 
+    15 if it is greater than 15 it moves 1.5 to the left or to the right till it 
+    passes all 4 of the cups without crashing into any cups on the way.
+    """
     distance_cm = sonar.get_distance_cm(filtered=True)
 
     action_log_list.append(f"Distance: {distance_cm} : Cups: {cups}")
